@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Process
 {
-    interface IProcess
+    public interface IProcess
     {
 
     }

@@ -50,11 +50,13 @@
     <Compile Include="src\CPU\RoundRobinCPU.cs" />
     <Compile Include="src\Instructions\Instruction.cs" />
     <Compile Include="src\Instructions\InstructionFactory.cs" />
+    <Compile Include="src\Memory\Disk.cs" />
     <Compile Include="src\Memory\DMAThread.cs" />
     <Compile Include="src\Memory\IMemory.cs" />
     <Compile Include="src\Memory\Page.cs" />
     <Compile Include="src\Memory\PageTable.cs" />
     <Compile Include="src\Memory\ProgramCache.cs" />
+    <Compile Include="src\Memory\RAM.cs" />
     <Compile Include="src\Process\IProcess.cs" />
     <Compile Include="src\Process\Process.cs" />
     <Compile Include="src\Process\ProcessControlBlock.cs" />

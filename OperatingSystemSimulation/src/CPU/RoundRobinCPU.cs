@@ -29,9 +29,9 @@ namespace OperatingSystemSimulation.src.CPU
             ProcessQueue.EnQueue(process);
         }
 
-        public void StartCPU
+        public void StartCPU()
         {
-            get { throw new NotImplementedException(); }
+            throw new NotImplementedException();
         }
 
         private void WorkingLoop()

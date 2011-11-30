@@ -8,10 +8,10 @@ namespace OperatingSystemSimulation.src.CPU
 {
     public interface ICPU
     {
-        public int CPUID { get; }
-        public int ProcessCount { get; }
-        public void AddProcess(IProcess process);
-        public void StartCPU { get; }
-        public void Shutdown();
+        int CPUID { get; }
+        int ProcessCount { get; }
+        void AddProcess(IProcess process);
+        void StartCPU();
+        void Shutdown();
     }
 }
