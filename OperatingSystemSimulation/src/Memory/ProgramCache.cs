@@ -27,7 +27,7 @@ namespace OperatingSystemSimulation.src.Memory
 
         public Instruction GetInstruction(Int32 programCounter)
         {
-            Int32 instructionData = read(programCounter);
+            UInt32 instructionData = (UInt32)read(programCounter);
 
             return InstructionFactory.CreateInstruction(instructionData);     
         }

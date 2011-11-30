@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OperatingSystemSimulation.src.CPU;
+using OperatingSystemSimulation.src.Memory;
 
 namespace OperatingSystemSimulation.src.Process
 {
-    class ProcessControlBlock
+    public struct ProcessControlBlock
     {
+        public Registers ProcessRegisters { get; set; }
+        public IMemory ProgramData { get; set; }
     }
 }

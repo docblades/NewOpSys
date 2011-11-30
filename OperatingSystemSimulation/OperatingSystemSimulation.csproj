@@ -45,11 +45,21 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\CPU\CPU Thread.cs" />
     <Compile Include="src\CPU\ICPU.cs" />
+    <Compile Include="src\CPU\Registers.cs" />
     <Compile Include="src\CPU\RoundRobinCPU.cs" />
+    <Compile Include="src\Instructions\Arithmetic\ArithmeticInstruction.cs" />
+    <Compile Include="src\Instructions\Arithmetic\ArithmeticInstructionFactory.cs" />
+    <Compile Include="src\Instructions\Conditional\ConditionalInstruction.cs" />
+    <Compile Include="src\Instructions\Conditional\ConditionalInstructionFactory.cs" />
+    <Compile Include="src\Instructions\ExceptionInstructionFactory.cs" />
+    <Compile Include="src\Instructions\IInstructionFactory.cs" />
     <Compile Include="src\Instructions\Instruction.cs" />
     <Compile Include="src\Instructions\InstructionFactory.cs" />
+    <Compile Include="src\Instructions\IO\IOInstruction.cs" />
+    <Compile Include="src\Instructions\IO\IOInstructionFactory.cs" />
+    <Compile Include="src\Instructions\Jump\JumpInstruction.cs" />
+    <Compile Include="src\Instructions\Jump\JumpInstructionFactory.cs" />
     <Compile Include="src\Memory\Disk.cs" />
     <Compile Include="src\Memory\DMAThread.cs" />
     <Compile Include="src\Memory\IMemory.cs" />

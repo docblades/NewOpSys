@@ -5,11 +5,43 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Instructions
 {
-    class InstructionFactory
+    abstract class InstructionFactory
     {
-        public static Instruction CreateInstruction(Int32 instruction)
+        private static IList<IInstructionFactory> Factories = new List<IInstructionFactory>()
         {
-            throw new NotImplementedException();
+            new Arithmetic.ArithmeticInstructionFactory(),
+            new Conditional.ConditionalInstructionFactory(),
+            new IO.IOInstructionFactory(),
+            new Jump.JumpInstructionFactory(),
+            new ExceptionInstructionFactory()
+        };
+
+        public static Instruction CreateInstruction(UInt32 instruction)
+        {
+            IInstructionFactory factory = Factories.First(fact => fact.IsMyInstructionType(instruction));
+            return factory.CreateInstruction(instruction);
+        }
+
+        private static UInt32 INSTRUCTIONTYPEMASK = (uint)3221225472U;
+        protected static UInt32 MaskAllButInstructionType(UInt32 instructionData)
+        {
+            const int instructionTypeShift = 30;
+
+            UInt32 maskedType = instructionData & INSTRUCTIONTYPEMASK;
+            UInt32 shiftedType = maskedType >> instructionTypeShift;
+
+            return shiftedType;
+        }
+
+        private static UInt32 OPCODEMASK = (uint)1056964608U;
+        protected static UInt32 GetOpCode(UInt32 instructionData)
+        {
+            const int opcodeShift = 24;
+
+            UInt32 maskedOpCode = instructionData & OPCODEMASK;
+            UInt32 ShiftedOpCode = maskedOpCode >> opcodeShift;
+
+            return ShiftedOpCode;
         }
     }
 }
