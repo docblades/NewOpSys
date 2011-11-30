@@ -8,20 +8,20 @@ namespace OperatingSystemSimulation.src.Memory
     class Page : IMemory
     {
         private PageTable Table { get; set; }
-        public Int32 PageNumber { get; set; }
+        public int PageNumber { get; set; }
 
-        public Page(PageTable pageTable, Int32 size)
+        public Page(PageTable pageTable, uint size)
         {
             Table = pageTable;
             PageNumber = Table.GetNewPageNumber(size);
         }
 
-        public void write(int address, int value)
+        public void write(uint address, uint value)
         {
             Table.write(PageNumber, address, value);
         }
 
-        public int read(int address)
+        public uint read(uint address)
         {
             return Table.read(PageNumber, address);
         }

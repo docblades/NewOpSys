@@ -35,7 +35,8 @@ namespace OperatingSystemSimulation.src.Instructions.Arithmetic
             {(uint)0x07, typeof(MUL)},
             {(uint)0x08, typeof(DIV)},
             {(uint)0x09, typeof(AND)},
-            {(uint)0x0A, typeof(OR)}
+            {(uint)0x0A, typeof(OR)},
+            {(uint)0x10, typeof(SLT)}
         };
     }
 }

@@ -7,29 +7,9 @@ namespace OperatingSystemSimulation.src.Process
 {
     class Process : IProcess
     {
-        public ProcessControlBlock PCB
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public ProcessControlBlock PCB { get; set; }
 
-        public bool ContinueCalculating
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public bool ContinueCalculating { get; set; }
 
         public Instructions.Instruction GetNextInstruction()
         {

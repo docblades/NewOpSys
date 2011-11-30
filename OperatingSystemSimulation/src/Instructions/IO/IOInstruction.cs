@@ -60,5 +60,42 @@ namespace OperatingSystemSimulation.src.Instructions.IO
 
         #endregion
 
+        protected void InsertActionIntoDMAQueueAndStopExecution(Process.IProcess myProcess, Memory.DMARequest.MemoryAction action)
+        {
+            var request = new Memory.DMARequest()
+            {
+                MyProcess = myProcess,
+                MemoryWork = action
+            };
+
+            myProcess.ContinueCalculating = false;
+            myProcess.PCB.ProcessRegisters.ProgramCounter += 1;
+
+            Sys.System.DMA.InsertRequestInQueue(request);
+        }
+
+        protected void InsertActionIntoDMAQueueAndStopExecution(Process.IProcess myProcess, Memory.DMARequest.MemoryAction action, IDictionary<string, uint> extraData)
+        {
+            var request = new Memory.DMARequest()
+            {
+                MyProcess = myProcess,
+                MemoryWork = action,
+                ExtraData = extraData
+            };
+
+            myProcess.ContinueCalculating = false;
+            myProcess.PCB.ProcessRegisters.ProgramCounter += 1;
+
+            Sys.System.DMA.InsertRequestInQueue(request);
+        }
+
+        protected IDictionary<string,uint> GetMetaData()
+        {
+            return new Dictionary<string, uint>(){
+                {"Register1", Register1},
+                {"Register2", Register2},
+                {"Address", Address}
+            };           
+        }
     }
 }

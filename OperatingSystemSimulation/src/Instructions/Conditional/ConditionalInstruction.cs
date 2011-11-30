@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OperatingSystemSimulation.src.Process;
 
 namespace OperatingSystemSimulation.src.Instructions.Conditional
 {
@@ -59,5 +60,28 @@ namespace OperatingSystemSimulation.src.Instructions.Conditional
         }
 
         #endregion
+
+        protected uint GetBaseValue(IProcess myProcess)
+        {
+            return myProcess.PCB.ProcessRegisters.GetRegisterValue(Base);
+        }
+
+        protected uint GetDestinationValue(IProcess myProcess)
+        {
+            return myProcess.PCB.ProcessRegisters.GetRegisterValue(Destination);
+        }
+
+        protected void ChangeProgramAddressAndContinueProcessing(IProcess myProcess)
+        {
+            myProcess.ContinueCalculating = true;
+            myProcess.PCB.ProcessRegisters.ProgramCounter = (int)Address;
+        }
+
+        protected void ContinueProcessing(IProcess myProcess)
+        {
+            myProcess.ContinueCalculating = true;
+            myProcess.PCB.ProcessRegisters.ProgramCounter += 1;
+        }
+
     }
 }

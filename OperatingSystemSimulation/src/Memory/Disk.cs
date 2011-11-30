@@ -15,19 +15,19 @@ namespace OperatingSystemSimulation.src.Memory
             FileStream = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read);
         }
 
-        public void write(int address, int value)
+        public void write(uint address, uint value)
         {
             BinaryWriter writer = new BinaryWriter(FileStream);
-            writer.Seek(address, SeekOrigin.Begin);
+            writer.Seek((int)address, SeekOrigin.Begin);
             writer.Write(value);
         }
 
-        public int read(int address)
+        public uint read(uint address)
         {
             BinaryReader reader = new BinaryReader(FileStream);
             reader.BaseStream.Seek(address, SeekOrigin.Begin);
 
-            return reader.ReadInt32();
+            return reader.ReadUInt32();
         }
     }
 }

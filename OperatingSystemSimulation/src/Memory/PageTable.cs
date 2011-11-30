@@ -15,36 +15,36 @@ namespace OperatingSystemSimulation.src.Memory
             RealMemory = realMemory;
         }
          
-        public Int32 GetNewPageNumber(int size)
+        public int GetNewPageNumber(uint size)
         {
             PageInfo freePage = GetAFreePage(size);
             return InfoTable.IndexOf(freePage);
         }
 
-        public Int32 read(int pageNum, Int32 offset)
+        public uint read(int pageNum, uint offset)
         {
-            Int32 realAddress = GetRealAddress(pageNum) + offset;
+            uint realAddress = GetRealAddress(pageNum) + offset;
 
             return RealMemory.read(realAddress);
         }
 
-        public void write(int pageNum, Int32 offset, Int32 value)
+        public void write(int pageNum, uint offset, uint value)
         {
-            Int32 realAddress = GetRealAddress(pageNum) + offset;
+            uint realAddress = GetRealAddress(pageNum) + offset;
 
             RealMemory.write(realAddress, value);
         }
 
-        private Int32 GetRealAddress(int pageNum)
+        private uint GetRealAddress(int pageNum)
         {
             return InfoTable[pageNum].RealAddress;
         }
 
         #region newpage helpers
         
-        private PageInfo GetAFreePage(int size)
+        private PageInfo GetAFreePage(uint size)
         {
-            int neededBlocks = BlocksForSize(size);
+            uint neededBlocks = BlocksForSize(size);
 
             if (InfoTable.Any(page => PageIsUnusedAndBigEnough(page, neededBlocks)))
             {
@@ -53,7 +53,7 @@ namespace OperatingSystemSimulation.src.Memory
             else
             {
                 PageInfo lastPage = InfoTable.Last();
-                Int32 nextAvailableAddress = lastPage.RealAddress + lastPage.Size;
+                uint nextAvailableAddress = lastPage.RealAddress + lastPage.Size;
 
                 PageInfo newPage = new PageInfo()
                     {
@@ -68,14 +68,14 @@ namespace OperatingSystemSimulation.src.Memory
             }             
         }
 
-        private static int BLOCKSIZE = 4;
+        private static uint BLOCKSIZE = 4;
 
-        private static int BlocksForSize(int size)
+        private static uint BlocksForSize(uint size)
         {
-            return (int)Math.Ceiling((double)size / (double)BLOCKSIZE);
+            return (uint)Math.Ceiling((double)size / (double)BLOCKSIZE);
         }
 
-        private static bool PageIsUnusedAndBigEnough(PageInfo page, int blocks)
+        private static bool PageIsUnusedAndBigEnough(PageInfo page, uint blocks)
         {
             return page.Used == false && page.Size >= blocks * BLOCKSIZE;
         }
@@ -84,8 +84,8 @@ namespace OperatingSystemSimulation.src.Memory
 
         private struct PageInfo
         {
-            public Int32 RealAddress { get; set; }
-            public Int32 Size { get; set; }
+            public uint RealAddress { get; set; }
+            public uint Size { get; set; }
             public bool Used { get; set; }
         }
     }

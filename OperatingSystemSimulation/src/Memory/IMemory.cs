@@ -7,7 +7,7 @@ namespace OperatingSystemSimulation.src.Memory
 {
     public interface IMemory
     {
-        void write(Int32 address, Int32 value);
-        Int32 read(Int32 address);
+        void write(uint address, uint value);
+        uint read(uint address);
     }
 }

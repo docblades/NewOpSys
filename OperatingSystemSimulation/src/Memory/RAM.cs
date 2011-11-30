@@ -7,21 +7,21 @@ namespace OperatingSystemSimulation.src.Memory
 {
     class RAM : IMemory
     {
-        private IList<Int32> LocalMem { get; set; }
+        private IList<uint> LocalMem { get; set; }
 
         public RAM(int size)
         {
-            LocalMem = new List<Int32>(size);
+            LocalMem = new List<uint>(size);
         }
 
-        public void write(int address, int value)
+        public void write(uint address, uint value)
         {
-            LocalMem[address] = value;
+            LocalMem[(int)address] = value;
         }
 
-        public int read(int address)
+        public uint read(uint address)
         {
-            return LocalMem[address];
+            return LocalMem[(int)address];
         }
     }
 }

@@ -8,24 +8,24 @@ namespace OperatingSystemSimulation.src.Memory
 {
     class ProgramCache : IMemory
     {
-        IList<Int32> programMemory;
+        IList<uint> programMemory;
 
         public ProgramCache(int programSize)
         {
-            programMemory = new List<Int32>(programSize);
+            programMemory = new List<uint>(programSize);
         }
 
-        public void write(int address, int value)
+        public void write(uint address, uint value)
         {
-            programMemory[address] = value;
+            programMemory[(int)address] = value;
         }
 
-        public int read(int address)
+        public uint read(uint address)
         {
-            return programMemory[address];
+            return programMemory[(int)address];
         }
 
-        public Instruction GetInstruction(Int32 programCounter)
+        public Instruction GetInstruction(uint programCounter)
         {
             UInt32 instructionData = (UInt32)read(programCounter);
 

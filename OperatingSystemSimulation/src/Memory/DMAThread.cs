@@ -5,7 +5,11 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Memory
 {
-    class DMAThread
+    public class DMAThread
     {
+        public void InsertRequestInQueue(DMARequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

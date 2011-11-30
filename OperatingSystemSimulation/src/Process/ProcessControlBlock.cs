@@ -11,5 +11,6 @@ namespace OperatingSystemSimulation.src.Process
     {
         public Registers ProcessRegisters { get; set; }
         public IMemory ProgramData { get; set; }
+        public IMemory DataArea { get; set; }
     }
 }

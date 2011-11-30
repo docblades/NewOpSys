@@ -28,7 +28,13 @@ namespace OperatingSystemSimulation.src.Instructions.Conditional
 
         private static IDictionary<uint, System.Type> InstructionMap = new Dictionary<uint, System.Type>()
         {
-            {(uint)0x13,  typeof(NOOP)}
+            {(uint)0x13, typeof(NOOP)},
+            {(uint)0x15, typeof(BEQ)},
+            {(uint)0x16, typeof(BNE)},
+            {(uint)0x17, typeof(BEZ)},
+            {(uint)0x18, typeof(BNZ)},
+            {(uint)0x19, typeof(BGZ)},
+            {(uint)0x20, typeof(BLZ)}
         };
 
     }

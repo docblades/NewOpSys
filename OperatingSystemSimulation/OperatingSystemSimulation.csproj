@@ -57,7 +57,14 @@
     <Compile Include="src\Instructions\Arithmetic\MUL.cs" />
     <Compile Include="src\Instructions\Arithmetic\NOOP.cs" />
     <Compile Include="src\Instructions\Arithmetic\OR.cs" />
+    <Compile Include="src\Instructions\Arithmetic\SLT.cs" />
     <Compile Include="src\Instructions\Arithmetic\SUB.cs" />
+    <Compile Include="src\Instructions\Conditional\BEQ.cs" />
+    <Compile Include="src\Instructions\Conditional\BEZ.cs" />
+    <Compile Include="src\Instructions\Conditional\BGZ.cs" />
+    <Compile Include="src\Instructions\Conditional\BLZ.cs" />
+    <Compile Include="src\Instructions\Conditional\BNE.cs" />
+    <Compile Include="src\Instructions\Conditional\BNZ.cs" />
     <Compile Include="src\Instructions\Conditional\ConditionalInstruction.cs" />
     <Compile Include="src\Instructions\Conditional\ConditionalInstructionFactory.cs" />
     <Compile Include="src\Instructions\Conditional\NOOP.cs" />
@@ -66,14 +73,25 @@
     <Compile Include="src\Instructions\Instruction.cs" />
     <Compile Include="src\Instructions\InstructionFactory.cs" />
     <Compile Include="src\Instructions\InstructionUtility.cs" />
+    <Compile Include="src\Instructions\IO\ADDI.cs" />
+    <Compile Include="src\Instructions\IO\DIVI.cs" />
     <Compile Include="src\Instructions\IO\IOInstruction.cs" />
     <Compile Include="src\Instructions\IO\IOInstructionFactory.cs" />
+    <Compile Include="src\Instructions\IO\LW.cs" />
+    <Compile Include="src\Instructions\IO\MOVI.cs" />
+    <Compile Include="src\Instructions\IO\MULI.cs" />
     <Compile Include="src\Instructions\IO\NOOP.cs" />
+    <Compile Include="src\Instructions\IO\RD.cs" />
+    <Compile Include="src\Instructions\IO\SLTI.cs" />
+    <Compile Include="src\Instructions\IO\ST.cs" />
+    <Compile Include="src\Instructions\IO\WR.cs" />
     <Compile Include="src\Instructions\Jump\HLT.cs" />
+    <Compile Include="src\Instructions\Jump\JMP.cs" />
     <Compile Include="src\Instructions\Jump\JumpInstruction.cs" />
     <Compile Include="src\Instructions\Jump\JumpInstructionFactory.cs" />
     <Compile Include="src\Instructions\Jump\NOOP.cs" />
     <Compile Include="src\Memory\Disk.cs" />
+    <Compile Include="src\Memory\DMARequest.cs" />
     <Compile Include="src\Memory\DMAThread.cs" />
     <Compile Include="src\Memory\IMemory.cs" />
     <Compile Include="src\Memory\Page.cs" />
@@ -84,6 +102,8 @@
     <Compile Include="src\Process\Process.cs" />
     <Compile Include="src\Process\ProcessControlBlock.cs" />
     <Compile Include="src\Queues\BlockingQueue.cs" />
+    <Compile Include="src\Sys\Scheduler.cs" />
+    <Compile Include="src\Sys\System.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\Loader\" />

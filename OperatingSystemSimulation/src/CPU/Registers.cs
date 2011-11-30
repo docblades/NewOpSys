@@ -8,6 +8,8 @@ namespace OperatingSystemSimulation.src.CPU
     public class Registers
     {
         public Int32 ProgramCounter { get; set; }
+        public const int ACCUMULATORADDRESS = 0; //0000b
+        public const int ZEROREGISTERADDRESS = 1; //0001b
         
         public Registers()
         {
@@ -25,7 +27,7 @@ namespace OperatingSystemSimulation.src.CPU
 
         private IRegister Accumulator = new Register()
         {
-            Address = 0, // 0000
+            Address = ACCUMULATORADDRESS,
             Value = 0
         };
 
@@ -88,7 +90,7 @@ namespace OperatingSystemSimulation.src.CPU
             {
                 get
                 {
-                    return 1; // 0001
+                    return ZEROREGISTERADDRESS;
                 }
                 set
                 {

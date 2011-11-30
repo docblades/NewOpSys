@@ -29,7 +29,8 @@ namespace OperatingSystemSimulation.src.Instructions.Jump
         private static IDictionary<uint, System.Type> InstructionMap = new Dictionary<uint, System.Type>()
         {
             {(uint)0x13,  typeof(NOOP)},
-            {(uint)0x12, typeof(HLT)}
+            {(uint)0x12, typeof(HLT)},
+            {(uint)0x14, typeof(JMP)}
         };
 
     }
