@@ -36,7 +36,17 @@ namespace OperatingSystemSimulation.src.CPU
 
         private void WorkingLoop()
         {
-            
+            IProcess process;
+            while (!shuttingDown)
+            {
+                process = GetNextProcess();
+
+            }
+        }
+
+        private IProcess GetNextProcess()
+        {
+            return ProcessQueue.DeQueue();
         }
 
         public void Shutdown()
