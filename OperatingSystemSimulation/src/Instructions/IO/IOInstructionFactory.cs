@@ -5,16 +5,31 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Instructions.IO
 {
-    class IOInstructionFactory : IInstructionFactory
+    class IOInstructionFactory : InstructionFactory, IInstructionFactory
     {
+        private uint MyType = 3; // 11b
         public bool IsMyInstructionType(uint instructionData)
         {
-            throw new NotImplementedException();
+            uint instructionType = GetInstructionType(instructionData);
+            return instructionType == MyType;
         }
 
-        public Instruction CreateInstruction(uint instructionData)
+        Instruction IInstructionFactory.CreateInstruction(uint instructionData)
         {
-            throw new NotImplementedException();
+            uint opCode = GetOpCode(instructionData);
+
+            System.Type instructionType = InstructionMap[opCode];
+            IOInstruction instruction = (IOInstruction)Activator.CreateInstance(instructionType);
+
+            instruction.SetupAddressAndRegisters(instructionData);
+
+            return instruction;
         }
+
+        private static IDictionary<uint, System.Type> InstructionMap = new Dictionary<uint, System.Type>()
+        {
+            {(uint)0x13,  typeof(NOOP)}
+        };
+   
     }
 }

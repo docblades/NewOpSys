@@ -12,7 +12,7 @@ namespace OperatingSystemSimulation.src.Instructions
             return true;
         }
 
-        public Instruction CreateInstruction(uint instructionData)
+        Instruction IInstructionFactory.CreateInstruction(uint instructionData)
         {
             throw new ArgumentException("Not a recognized instruction type");
         }

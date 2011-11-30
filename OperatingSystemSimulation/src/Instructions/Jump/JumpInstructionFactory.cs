@@ -5,16 +5,32 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Instructions.Jump
 {
-    class JumpInstructionFactory : IInstructionFactory
+    class JumpInstructionFactory : InstructionFactory, IInstructionFactory
     {
+        private UInt32 MyType = 2; // 10b
         public bool IsMyInstructionType(uint instructionData)
         {
-            throw new NotImplementedException();
+            uint instructionType = GetInstructionType(instructionData);
+            return instructionType == MyType;
         }
 
-        public Instruction CreateInstruction(uint instructionData)
+        Instruction IInstructionFactory.CreateInstruction(uint instructionData)
         {
-            throw new NotImplementedException();
+            uint opCode = GetOpCode(instructionData);
+
+            System.Type instructionType = InstructionMap[opCode];
+            JumpInstruction instruction = (JumpInstruction)Activator.CreateInstance(instructionType);
+
+            instruction.SetupAddress(instructionData);
+
+            return instruction;
         }
+
+        private static IDictionary<uint, System.Type> InstructionMap = new Dictionary<uint, System.Type>()
+        {
+            {(uint)0x13,  typeof(NOOP)},
+            {(uint)0x12, typeof(HLT)}
+        };
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OperatingSystemSimulation.src.Instructions
 {
-    abstract class InstructionFactory
+    public abstract class InstructionFactory
     {
         private static IList<IInstructionFactory> Factories = new List<IInstructionFactory>()
         {
@@ -16,14 +16,14 @@ namespace OperatingSystemSimulation.src.Instructions
             new ExceptionInstructionFactory()
         };
 
-        public static Instruction CreateInstruction(UInt32 instruction)
+        public static Instruction CreateInstruction(UInt32 instructionData)
         {
-            IInstructionFactory factory = Factories.First(fact => fact.IsMyInstructionType(instruction));
-            return factory.CreateInstruction(instruction);
+            IInstructionFactory factory = Factories.First(fact => fact.IsMyInstructionType(instructionData));
+            return factory.CreateInstruction(instructionData);
         }
 
         private static UInt32 INSTRUCTIONTYPEMASK = (uint)3221225472U;
-        protected static UInt32 MaskAllButInstructionType(UInt32 instructionData)
+        protected static UInt32 GetInstructionType(UInt32 instructionData)
         {
             const int instructionTypeShift = 30;
 
